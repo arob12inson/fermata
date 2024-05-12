@@ -1,0 +1,11 @@
+{
+  "name": "Funny guy",
+  "version": "1.0.0",
+  "description": "Just a funny guy",
+  "manifest_version": 3,
+  "author": "Aidan Robinson",
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "Funny guy"
+  }
+}
