@@ -4,8 +4,15 @@
   "description": "Just a funny guy",
   "manifest_version": 3,
   "author": "Aidan Robinson",
+  "permissions": ["activeTab"],
   "action": {
     "default_popup": "index.html",
     "default_title": "Funny guy"
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
