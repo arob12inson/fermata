@@ -1,16 +1,3 @@
-// async function fetchData() {
-//   const res = await fetch("https://official-joke-api.appspot.com/random_joke");
-//   const record = await res.json();
-//   console.log("test");
-//   document.getElementById("setup").innerHTML = record.setup;
-//   document.getElementById("punchline").innerHTML = record.punchline;
-//   const video = document.querySelector("video");
-//   document.getElementById("time").innerHTML = video.currentTime;
-// }
-// fetchData();
-
-alert("my script loaded!");
-
 document.addEventListener("keydown", function (event) {
   if (event.key === "p") {
     const video = document.querySelector("video");
