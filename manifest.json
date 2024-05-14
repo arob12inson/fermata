@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Funny guy",
+  "name": "Fermata",
   "version": "1.0.0",
-  "description": "Just a funny guy",
+  "description": "An extension to split a song into easily learnable licks",
   "author": "Aidan Robinson",
   "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "index.html",
-    "default_title": "Funny guy"
+    "default_title": "Fermata"
   },
   "host_permissions": ["*://*.youtube.com/*"],
   "content_scripts": [
