@@ -1,5 +1,5 @@
 document.addEventListener("keydown", function (event) {
-  if (event.key === "p") {
+  if (event.key === " ") {
     const video = document.querySelector("video");
     if (video) {
       if (!video.paused) {
