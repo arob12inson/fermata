@@ -13,48 +13,35 @@ class Markers {
   }
 
   // Add an element to the stack
-  addMark(element) {
-    this.previous_marks.push(video.currentTime);
+  createMark(element) {
+    if (video) {
+      this.previous_marks.push(video.currentTime);
+    }
   }
 
   // Remove and return the top element from the stack
   rewind() {
-    if (this.isEmpty()) {
-      return "Stack is empty";
+    if (!video || this.isEmpty()) {
+      return;
     }
     if (
-      video.currentTime - this.previous_marks[previous_marks.length - 1] <
+      video.currentTime - this.previous_marks[this.previous_marks.length - 1] <
       WAIT_TIME
     ) {
-      this.future_marks.push(previous_marks.pop());
+      this.future_marks.push(this.previous_marks.pop());
     }
     video.currentTime = this.previous_marks[this.previous_marks.length - 1];
   }
 
-  // View the top element of the stack
-  peek() {
-    if (this.isEmpty()) {
-      return "Stack is empty";
-    }
-    return this.items[this.items.length - 1];
-  }
-
   // Check if the stack is empty
   isEmpty() {
-    // TODO change to "no previous marks"
     return this.previous_marks.length === 0;
   }
 
-  // // Get the size of the stack
-  // size() {
-  //   return this.items.length;
-  // }
-
-  // // Empty the stack
-  // clear() {
-  //   this.items = [];
-  // }
+  // TODO delete markers
 }
+
+const markers = new Markers();
 
 document.addEventListener("keydown", function (event) {
   // p for pausing
@@ -71,22 +58,11 @@ document.addEventListener("keydown", function (event) {
   }
   // c for creating marks
   else if (event.key === "c") {
-    if (video) {
-      previous_marks.push(video.currentTime);
-      console.log(`timestamp created at ${video.currentTime} seconds.`);
-    }
+    markers.createMark();
   }
 
   // b for backtrack
   else if (event.key == "b") {
-    if (video && previous_marks) {
-      if (
-        video.currentTime - previous_marks[previous_marks.length - 1] <
-        WAIT_TIME
-      ) {
-        future_marks.push(previous_marks.pop());
-      }
-      video.currentTime = previous_marks[previous_marks.length - 1];
-    }
+    markers.rewind();
   }
 });
