@@ -4,6 +4,8 @@ future_marks = [];
 
 const video = document.querySelector("video");
 
+const WAIT_TIME = 0.5;
+
 document.addEventListener("keydown", function (event) {
   // p for pausing
   if (event.key === "p") {
@@ -28,6 +30,12 @@ document.addEventListener("keydown", function (event) {
   // b for backtrack
   else if (event.key == "b") {
     if (video && previous_marks) {
+      if (
+        video.currentTime - previous_marks[previous_marks.length - 1] <
+        WAIT_TIME
+      ) {
+        future_marks.push(previous_marks.pop());
+      }
       video.currentTime = previous_marks[previous_marks.length - 1];
     }
   }
