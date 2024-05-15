@@ -6,6 +6,56 @@ const video = document.querySelector("video");
 
 const WAIT_TIME = 0.5;
 
+class Markers {
+  constructor() {
+    this.previous_marks = [];
+    this.future_marks = [];
+  }
+
+  // Add an element to the stack
+  addMark(element) {
+    this.previous_marks.push(video.currentTime);
+  }
+
+  // Remove and return the top element from the stack
+  rewind() {
+    if (this.isEmpty()) {
+      return "Stack is empty";
+    }
+    if (
+      video.currentTime - this.previous_marks[previous_marks.length - 1] <
+      WAIT_TIME
+    ) {
+      this.future_marks.push(previous_marks.pop());
+    }
+    video.currentTime = this.previous_marks[this.previous_marks.length - 1];
+  }
+
+  // View the top element of the stack
+  peek() {
+    if (this.isEmpty()) {
+      return "Stack is empty";
+    }
+    return this.items[this.items.length - 1];
+  }
+
+  // Check if the stack is empty
+  isEmpty() {
+    // TODO change to "no previous marks"
+    return this.previous_marks.length === 0;
+  }
+
+  // // Get the size of the stack
+  // size() {
+  //   return this.items.length;
+  // }
+
+  // // Empty the stack
+  // clear() {
+  //   this.items = [];
+  // }
+}
+
 document.addEventListener("keydown", function (event) {
   // p for pausing
   if (event.key === "p") {
