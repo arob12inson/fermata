@@ -38,15 +38,7 @@ class Markers {
     return this.previous_marks.length === 0;
   }
 
-  // TODO delete markers
-}
-
-const markers = new Markers();
-
-document.addEventListener("keydown", function (event) {
-  // p for pausing
-  if (event.key === "p") {
-    // const video = document.querySelector("video");
+  pause() {
     if (video) {
       if (!video.paused) {
         video.pause();
@@ -55,6 +47,16 @@ document.addEventListener("keydown", function (event) {
         video.play();
       }
     }
+  }
+  // TODO delete markers
+}
+
+const markers = new Markers();
+
+document.addEventListener("keydown", function (event) {
+  // p for pausing
+  if (event.key === "p") {
+    markers.pause();
   }
   // c for creating marks
   else if (event.key === "c") {
